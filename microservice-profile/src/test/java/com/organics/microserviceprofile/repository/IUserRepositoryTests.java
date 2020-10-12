@@ -15,13 +15,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class UserRepositoryTests {
+public class IUserRepositoryTests {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    private UserRepository repository;
+    private IUserRepository repository;
 
     @Test
     void testAddUser() throws Exception {
