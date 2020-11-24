@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
 
+import com.organics.microserviceprofile.model.Role;
 import com.organics.microserviceprofile.model.User;
 
 import org.junit.jupiter.api.Test;
@@ -17,17 +18,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @DataJpaTest
 public class IUserRepositoryTests {
 
-    @Autowired
-    private TestEntityManager entityManager;
+  @Autowired
+  private TestEntityManager entityManager;
 
-    @Autowired
-    private IUserRepository repository;
+  @Autowired
+  private IUserRepository repository;
 
-    @Test
-    void testAddUser() throws Exception {
-        this.entityManager.persist(new User("TestUser", "test@test.com", "SE"));
-        Optional<User> user = this.repository.findById(1);
-        assertThat(user.get().getName()).isEqualTo("TestUser");
-        assertThat(user.get().getEmail()).isEqualTo("test@test.com");
-    }
+  @Test
+  void testAddUser() throws Exception {
+    this.entityManager.persist(new User("TestUser", "test@test.com", Role.BUYER));
+    Optional<User> user = this.repository.findById(1);
+    assertThat(user.get().getName()).isEqualTo("TestUser");
+    assertThat(user.get().getEmail()).isEqualTo("test@test.com");
+  }
 }
