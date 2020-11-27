@@ -28,7 +28,7 @@ public class IProductRepositoryTests {
   void testAddUser() throws Exception {
     this.entityManager.persist(new Product("TestProduct", "Organic food", ProductCategory.RAW));
     Optional<Product> product = this.repository.findById(1);
-    assertThat(product.get().getName()).isEqualTo("TestUser");
+    assertThat(product.get().getName()).isEqualTo("TestProduct");
     assertThat(product.get().getDescription()).isEqualTo("Organic food");
   }
 }
